@@ -1,5 +1,28 @@
 # Baal 👺
 
+## Demo Godwoken
+
+Broken:
+```
+npm install
+npm run compile
+npm run deploy
+```
+
+Error:
+```
+'{"jsonrpc":"2.0","id":54,"error":{"code":-32099,"message":"JSONRPCError: server error {\\"code\\":0,\\"message\\":\\"invalid exit code 52\\"}"}}',
+```
+
+Working:
+```
+npm install
+npm run compile
+npm run deploy:without-multisig
+```
+
+<hr/>
+
 Baal is a minimal yet composable DAO template continuing work from the [`Moloch`](https://github.com/MolochVentures/moloch), [`Minion`](https://github.com/raid-guild/moloch-minion) and [`Compound`](https://github.com/compound-finance/compound-protocol/tree/master/contracts/Governance) frameworks to make it easier for people to combine and command crypto assets with intuitive membership games.
 
 *Guilds, venture clubs and control panels can benefit from Baal:* 
