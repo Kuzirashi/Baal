@@ -660,20 +660,20 @@ contract Baal {
     ***************/
     /// @notice Allows batched calls to Baal.
     /// @param data An array of payloads for each call.
-    function multicall(bytes[] calldata data) external returns (bytes[] memory results) {
-        results = new bytes[](data.length);
-        unchecked {
-            for (uint256 i = 0; i < data.length; i++) {
-                (bool success, bytes memory result) = address(this).delegatecall(data[i]);
-                if (!success) {
-                    if (result.length < 68) revert();
-                    assembly { result := add(result, 0x04) }
-                    revert(abi.decode(result, (string)));
-                }
-                results[i] = result;
-            }
-        }
-    }
+    // function multicall(bytes[] calldata data) external returns (bytes[] memory results) {
+    //     results = new bytes[](data.length);
+    //     unchecked {
+    //         for (uint256 i = 0; i < data.length; i++) {
+    //             (bool success, bytes memory result) = address(this).delegatecall(data[i]);
+    //             if (!success) {
+    //                 if (result.length < 68) revert();
+    //                 assembly { result := add(result, 0x04) }
+    //                 revert(abi.decode(result, (string)));
+    //             }
+    //             results[i] = result;
+    //         }
+    //     }
+    // }
 
     /// @notice Returns confirmation for 'safe' ERC-721 (NFT) transfers to Baal.
     function onERC721Received(address, address, uint, bytes calldata) external pure returns (bytes4 sig) {

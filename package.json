@@ -6,7 +6,6 @@
   "scripts": {
     "compile": "hardhat compile",
     "deploy": "ts-node src/deploy.ts",
-    "deploy:without-multisig": "ts-node src/deploy-without-multisig.ts",
     "test": "hardhat test --network hardhat"
   },
   "repository": {
@@ -39,6 +38,7 @@
     "typescript": "^4.3.2"
   },
   "dependencies": {
-    "@polyjuice-provider/ethers": "^0.0.1-rc11"
+    "@polyjuice-provider/ethers": "^0.0.1-rc11",
+    "nervos-godwoken-integration": "^0.0.11"
   }
 }

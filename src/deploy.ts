@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { PolyjuiceWallet, PolyjuiceJsonRpcProvider } from '@polyjuice-provider/ethers';
-import { BigNumberish, ethers } from 'ethers';
+import { BigNumberish } from 'ethers';
 
 import {
     BaalFactory,
     TestErc20Factory,
-    RageQuitBankFactory,
-    BaalWithoutMulticallFactory
+    RageQuitBankFactory
 } from './types';
 import { NERVOS_PROVIDER_URL, USER_ONE_PRIVATE_KEY } from './config';
 
@@ -86,32 +85,6 @@ async function deployBaal() {
 	console.log('Block Number:', receipt.blockNumber);
 }
 
-async function deployBaalWithoutMulticall() {
-    const factory = new BaalWithoutMulticallFactory(summoner);
-
-    const weth = await deployERC20("WETH", "WETH", 10000000);
-    const shaman = await deployRageQuitBank();
-
-    const tx = factory.getDeployTransaction(
-        sharesPaused,
-        deploymentConfig.GRACE_PERIOD_IN_SECONDS,
-        deploymentConfig.MIN_VOTING_PERIOD_IN_SECONDS,
-        deploymentConfig.MAX_VOTING_PERIOD_IN_SECONDS,
-        deploymentConfig.TOKEN_NAME,
-        deploymentConfig.TOKEN_SYMBOL,
-        [weth.address],
-        [shaman.address],
-        [summoner.address],
-        [loot],
-        [shares]
-    );
-    const receipt = await (await summoner.sendTransaction(tx)).wait();
-    const Baal = BaalWithoutMulticallFactory.connect(receipt.contractAddress, summoner);
-
-	console.log('Contract Address:', Baal.address);
-	console.log('Block Number:', receipt.blockNumber);
-}
-
 async function runDemo() {
 	const address = await summoner.getAddress();
 	console.log('Summoning a Baal on network: Nervos Layer 2 Testnet');
@@ -123,7 +96,6 @@ async function runDemo() {
 	);
 
     await deployBaal();
-    // await deployBaalWithoutMulticall();
 
     process.exit(0);
 }

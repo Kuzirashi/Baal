@@ -3,8 +3,6 @@
 /* eslint-disable */
 export { BaalFactory } from "./BaalFactory";
 export type { Baal } from "./Baal";
-export { BaalWithoutMulticallFactory } from "./BaalWithoutMulticallFactory";
-export type { BaalWithoutMulticall } from "./BaalWithoutMulticall";
 export { TestErc20Factory } from "./TestErc20Factory";
 export type { TestErc20 } from "./TestErc20";
 export { RageQuitBankFactory } from "./RageQuitBankFactory";

@@ -33,6 +33,10 @@ const config: HardhatUserConfig = {
     // Obtain one at https://etherscan.io/
     apiKey: "61ED96HQAY6PASTEWRXN6AMYQEKM8SYTRY" // etherscan
   },
+  mocha: {
+    timeout: 200000,
+    parallel: false
+  }
 };
 
 export default config;

@@ -45,7 +45,6 @@ interface BaalInterface extends ethers.utils.Interface {
     "memberAction(address,uint96,uint96,bool)": FunctionFragment;
     "members(address)": FunctionFragment;
     "minVotingPeriod()": FunctionFragment;
-    "multicall(bytes[])": FunctionFragment;
     "name()": FunctionFragment;
     "nonces(address)": FunctionFragment;
     "numCheckpoints(address)": FunctionFragment;
@@ -151,10 +150,6 @@ interface BaalInterface extends ethers.utils.Interface {
   encodeFunctionData(
     functionFragment: "minVotingPeriod",
     values?: undefined
-  ): string;
-  encodeFunctionData(
-    functionFragment: "multicall",
-    values: [BytesLike[]]
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(functionFragment: "nonces", values: [string]): string;
@@ -311,7 +306,6 @@ interface BaalInterface extends ethers.utils.Interface {
     functionFragment: "minVotingPeriod",
     data: BytesLike
   ): Result;
-  decodeFunctionResult(functionFragment: "multicall", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "nonces", data: BytesLike): Result;
   decodeFunctionResult(
@@ -721,16 +715,6 @@ export class Baal extends Contract {
     "minVotingPeriod()"(overrides?: CallOverrides): Promise<{
       0: number;
     }>;
-
-    multicall(
-      data: BytesLike[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
-
-    "multicall(bytes[])"(
-      data: BytesLike[],
-      overrides?: Overrides
-    ): Promise<ContractTransaction>;
 
     name(overrides?: CallOverrides): Promise<{
       0: string;
@@ -1308,16 +1292,6 @@ export class Baal extends Contract {
 
   "minVotingPeriod()"(overrides?: CallOverrides): Promise<number>;
 
-  multicall(
-    data: BytesLike[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
-  "multicall(bytes[])"(
-    data: BytesLike[],
-    overrides?: Overrides
-  ): Promise<ContractTransaction>;
-
   name(overrides?: CallOverrides): Promise<string>;
 
   "name()"(overrides?: CallOverrides): Promise<string>;
@@ -1830,13 +1804,6 @@ export class Baal extends Contract {
     minVotingPeriod(overrides?: CallOverrides): Promise<number>;
 
     "minVotingPeriod()"(overrides?: CallOverrides): Promise<number>;
-
-    multicall(data: BytesLike[], overrides?: CallOverrides): Promise<string[]>;
-
-    "multicall(bytes[])"(
-      data: BytesLike[],
-      overrides?: CallOverrides
-    ): Promise<string[]>;
 
     name(overrides?: CallOverrides): Promise<string>;
 
@@ -2397,13 +2364,6 @@ export class Baal extends Contract {
 
     "minVotingPeriod()"(overrides?: CallOverrides): Promise<BigNumber>;
 
-    multicall(data: BytesLike[], overrides?: Overrides): Promise<BigNumber>;
-
-    "multicall(bytes[])"(
-      data: BytesLike[],
-      overrides?: Overrides
-    ): Promise<BigNumber>;
-
     name(overrides?: CallOverrides): Promise<BigNumber>;
 
     "name()"(overrides?: CallOverrides): Promise<BigNumber>;
@@ -2883,16 +2843,6 @@ export class Baal extends Contract {
 
     "minVotingPeriod()"(
       overrides?: CallOverrides
-    ): Promise<PopulatedTransaction>;
-
-    multicall(
-      data: BytesLike[],
-      overrides?: Overrides
-    ): Promise<PopulatedTransaction>;
-
-    "multicall(bytes[])"(
-      data: BytesLike[],
-      overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     name(overrides?: CallOverrides): Promise<PopulatedTransaction>;
